@@ -2,6 +2,8 @@
 
 GNOME Shell extension that replaces the 'Activities' button with an i3-like workspaces bar.
 
+On GNOME Extension: https://extensions.gnome.org/extension/5090/space-bar/
+
 Originally a fork of the extension [Workspaces
 Bar](https://extensions.gnome.org/extension/3851/workspaces-bar/) by
 [fthx](https://extensions.gnome.org/accounts/profile/fthx), this extension grew into a more
