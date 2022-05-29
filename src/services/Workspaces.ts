@@ -161,6 +161,17 @@ export class Workspaces {
         }
     }
 
+    activateEmptyOrAdd() {
+        const index = this.workspaces.findIndex(
+            (workspace) => workspace.isEnabled && !workspace.hasWindows,
+        );
+        if (index >= 0) {
+            this.activate(index);
+        } else {
+            this._addStaticWorkspace();
+        }
+    }
+
     _addStaticWorkspace() {
         global.workspace_manager.append_new_workspace(true, global.get_current_time());
         Main.overview.show();

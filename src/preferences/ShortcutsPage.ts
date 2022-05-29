@@ -50,8 +50,9 @@ export class ShortcutsPage {
             settings: this._settings,
             window: this.window,
             group,
-            key: 'new-workspace-key',
-            title: 'Add new workspace',
+            key: 'activate-empty-key',
+            title: 'Switch to empty workspace',
+            subtitle: 'Adds new workspace if needed'
         });
 
         addKeyboardShortcut({

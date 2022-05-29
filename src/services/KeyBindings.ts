@@ -62,7 +62,7 @@ export class KeyBindings {
 
     private _addExtensionKeyBindings() {
         this.addKeyBinding('activate-previous-key', () => this._ws.activatePrevious());
-        this.addKeyBinding('new-workspace-key', () => this._ws.addWorkspace());
+        this.addKeyBinding('activate-empty-key', () => this._ws.activateEmptyOrAdd());
     }
 
     private _registerActivateByNumber(): void {
