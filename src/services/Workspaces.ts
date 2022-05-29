@@ -87,6 +87,7 @@ export class Workspaces {
                 this._smartNamesNotifier.notify();
             },
         );
+        this._settings.dynamicWorkspaces.subscribe(() => this._update())
         this._settings.workspaceNames.subscribe(() => this._update('workspace-names-changed'));
         this._settings.showEmptyWorkspaces.subscribe(() =>
             this._update('number-of-workspaces-changed'),
@@ -228,7 +229,7 @@ export class Workspaces {
         this._wsNames!.remove(index);
     }
 
-    private _update(reason: updateReason | null): void {
+    private _update(reason?: updateReason | null): void {
         this.numberOfEnabledWorkspaces = global.workspace_manager.get_n_workspaces();
         this.currentIndex = global.workspace_manager.get_active_workspace_index();
         if (
