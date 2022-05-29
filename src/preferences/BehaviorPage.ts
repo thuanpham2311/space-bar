@@ -3,8 +3,6 @@ const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
 import { addCombo, addToggle } from 'preferences/common';
 
-const settings = ExtensionUtils.getSettings(`${Me.metadata['settings-schema']}.behavior`);
-
 export const scrollWheelOptions = {
     panel: 'Over top panel',
     'workspaces-bar': 'Over workspaces bar',
@@ -13,7 +11,10 @@ export const scrollWheelOptions = {
 
 export class BehaviorPage {
     window!: Adw.PreferencesWindow;
-    page = new Adw.PreferencesPage();
+    readonly page = new Adw.PreferencesPage();
+    private readonly _settings = ExtensionUtils.getSettings(
+        `${Me.metadata['settings-schema']}.behavior`,
+    );
 
     init() {
         this.page.set_title('Behavior');
@@ -26,14 +27,14 @@ export class BehaviorPage {
         const group = new Adw.PreferencesGroup();
         group.set_title('General');
         addToggle({
-            settings,
+            settings: this._settings,
             group,
             key: 'show-empty-workspaces',
             title: 'Show empty workspaces',
         });
         addCombo({
             window: this.window,
-            settings,
+            settings: this._settings,
             group,
             key: 'scroll-wheel',
             title: 'Switch workspaces with scroll wheel',
@@ -49,7 +50,7 @@ export class BehaviorPage {
             'Remembers open applications when renaming a workspace and automatically assigns workspace names based on the first application started on a new workspace.',
         );
         addToggle({
-            settings,
+            settings: this._settings,
             group,
             key: 'smart-workspace-names',
             title: 'Enable smart workspace names',

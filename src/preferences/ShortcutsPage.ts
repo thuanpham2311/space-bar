@@ -3,11 +3,12 @@ const Me = ExtensionUtils.getCurrentExtension();
 import { Adw } from 'imports/gi';
 import { addKeyboardShortcut, addToggle } from 'preferences/common';
 
-const settings = ExtensionUtils.getSettings(`${Me.metadata['settings-schema']}.shortcuts`);
-
 export class ShortcutsPage {
     window!: Adw.PreferencesWindow;
-    page = new Adw.PreferencesPage();
+    readonly page = new Adw.PreferencesPage();
+    private readonly _settings = ExtensionUtils.getSettings(
+        `${Me.metadata['settings-schema']}.shortcuts`,
+    );
 
     init() {
         this.page.set_title('Shortcuts');
@@ -21,7 +22,7 @@ export class ShortcutsPage {
         this.page.add(group);
 
         addToggle({
-            settings,
+            settings: this._settings,
             group,
             key: 'enable-activate-workspace-shortcuts',
             title: 'Switch to workspace',
@@ -29,7 +30,7 @@ export class ShortcutsPage {
         });
 
         addToggle({
-            settings,
+            settings: this._settings,
             group,
             key: 'enable-move-to-workspace-shortcuts',
             title: 'Move to workspace',
@@ -38,7 +39,7 @@ export class ShortcutsPage {
         });
 
         addKeyboardShortcut({
-            settings,
+            settings: this._settings,
             window: this.window,
             group,
             key: 'activate-previous-key',
@@ -46,7 +47,7 @@ export class ShortcutsPage {
         });
 
         addKeyboardShortcut({
-            settings,
+            settings: this._settings,
             window: this.window,
             group,
             key: 'new-workspace-key',
@@ -54,7 +55,7 @@ export class ShortcutsPage {
         });
 
         addKeyboardShortcut({
-            settings,
+            settings: this._settings,
             window: this.window,
             group,
             key: 'open-menu',
