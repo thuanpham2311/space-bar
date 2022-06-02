@@ -36,7 +36,7 @@ export class KeyBindings {
 
     destroy() {
         for (const name of this._addedKeyBindings) {
-            this._removeKeybinding(name);
+            Main.wm.removeKeybinding(name);
         }
         this._addedKeyBindings = [];
     }

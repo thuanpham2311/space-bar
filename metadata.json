@@ -6,6 +6,6 @@
     "42"
   ],
   "url": "https://github.com/christopher-l/space-bar",
-  "version": 2,
+  "version": 3,
   "settings-schema": "org.gnome.shell.extensions.space-bar"
 }
