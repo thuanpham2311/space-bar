@@ -206,8 +206,8 @@ class WorkspacesBarDragHandler {
                 if (this._draggedWorkspace!.index !== dropPosition?.index) {
                     this._ws.reorderWorkspace(this._draggedWorkspace!.index, dropPosition?.index);
                 }
-                this._updateWorkspaces();
             }
+            this._updateWorkspaces();
             this._onDragFinished(actor as St.Bin);
             return true;
         } else {
