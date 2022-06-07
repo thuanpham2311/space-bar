@@ -63,6 +63,9 @@ export class WorkspaceNames {
                 );
                 if (newName) {
                     let workspaceNames = this._getNames();
+                    while (workspaceNames.length < index) {
+                        workspaceNames.push('');
+                    }
                     workspaceNames[index] = newName;
                     this._setNames(workspaceNames);
                     return;
